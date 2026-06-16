@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="lg:col-span-2 md:col-span-2 lg:pr-6">
             <div className="mb-4">
               <img
-                src="/logo.png"
+                src={`${import.meta.env.BASE_URL}logo.png`}
                 alt="AICORE Technologies"
                 width={222}
                 height={58}

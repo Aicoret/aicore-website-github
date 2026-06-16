@@ -65,7 +65,7 @@ export default function Header() {
           <Link href="/" data-testid="nav-logo" aria-label="AICORE home">
             <div className="flex items-center cursor-pointer select-none">
               <img
-                src="/logo.png"
+                src={`${import.meta.env.BASE_URL}logo.png`}
                 alt="AICORE Technologies"
                 width={222}
                 height={58}
