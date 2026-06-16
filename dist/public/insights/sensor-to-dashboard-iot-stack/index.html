@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <!-- Primary Meta -->
+    <meta name="theme-color" content="#07111F" />
+
+    <!-- Canonical -->
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="199x199" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <!-- Twitter Card -->
+    <!-- JSON-LD: Site identity -->
+    <!-- Fonts & DNS prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-DvIUXCCE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D3wuFude.css">
+      <title>From Sensor to Dashboard: Building a Production IoT Stack | AICORE Technologies</title>
+    <meta name="description" content="Step-by-step breakdown of a real sensor-to-cloud architecture." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aicoret.com/insights/sensor-to-dashboard-iot-stack" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AICORE Technologies" />
+    <meta property="og:title" content="From Sensor to Dashboard: Building a Production IoT Stack | AICORE Technologies" />
+    <meta property="og:description" content="Step-by-step breakdown of a real sensor-to-cloud architecture." />
+    <meta property="og:image" content="https://aicoret.com/opengraph.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://aicoret.com/insights/sensor-to-dashboard-iot-stack" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="From Sensor to Dashboard: Building a Production IoT Stack | AICORE Technologies" />
+    <meta name="twitter:description" content="Step-by-step breakdown of a real sensor-to-cloud architecture." />
+    <meta name="twitter:image" content="https://aicoret.com/opengraph.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"Article","headline":"From Sensor to Dashboard: Building a Production IoT Stack","description":"Step-by-step breakdown of a real sensor-to-cloud architecture.","image":"https://aicoret.com/opengraph.jpg","datePublished":"2025-02-28T23:00:00.000Z","dateModified":"2025-02-28T23:00:00.000Z","author":{"@type":"Organization","name":"AICORE Technical Team"},"publisher":{"@type":"Organization","name":"AICORE Technologies Limited","logo":{"@type":"ImageObject","url":"https://aicoret.com/logo.png"}},"mainEntityOfPage":"https://aicoret.com/insights/sensor-to-dashboard-iot-stack"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aicoret.com/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://aicoret.com/insights"},{"@type":"ListItem","position":3,"name":"From Sensor to Dashboard: Building a Production IoT Stack","item":"https://aicoret.com/insights/sensor-to-dashboard-iot-stack"}]}]}</script>
+      <style id="seo-prerender-style">.seo-prerender{max-width:960px;margin:0 auto;padding:96px 24px 48px;font-family:Inter,system-ui,sans-serif;line-height:1.65;color:#0f172a}.seo-prerender h1{font-size:2.5rem;line-height:1.1;margin:0 0 1rem}.seo-prerender p{margin:0 0 1rem;color:#475569}.seo-prerender nav{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}.seo-prerender a{color:#1E5BFF;font-weight:600}</style>
+  </head>
+  <body>
+    <div id="root"><main id="seo-prerender" class="seo-prerender">
+  <h1>From Sensor to Dashboard: Building a Production IoT Stack</h1>
+  <p>Step-by-step breakdown of a real sensor-to-cloud architecture.</p>
+  <p>Step-by-step breakdown of a real sensor-to-cloud architecture.</p>
+  <p>Why Most IoT Proofs of Concept Never Make It to Production: The gap between a working demo and a reliable production system is wider in IoT than in almost any other engineering discipline. A proof of concept might run fine on a bench with a single sensor and a direct USB connection. Production means dozens or hundreds of devices in the field, unreliable power, intermittent connectivity, firmware that needs to be updated remotely, and data that has to be accurate enough to make real decisions.</p>
+  <p>The Full Stack — Layer by Layer: A production IoT stack has five layers. The device layer covers the physical sensors, microcontrollers, and edge compute units — typically ESP32, STM32, or Raspberry Pi-class hardware depending on compute needs. The connectivity layer handles how data moves — MQTT over TLS for most telemetry, HTTP for configuration, and Modbus or RS-485 for legacy industrial equipment. The broker/gateway layer (MQTT broker, protocol translators) normalises data before it hits the backend. The backend layer handles ingestion, storage (InfluxDB or TimescaleDB for time-series), and business logic. The presentation layer surfaces dashboards, alerts, and exports.</p>
+  <p>Connectivity: The Layer That Kills Projects: The most underestimated layer is connectivity. Field deployments deal with GSM/LTE coverage gaps, Wi-Fi that drops overnight, and power outages that leave devices in an unknown state. Design for intermittency from the start: use persistent MQTT sessions, local buffering with SD card or flash storage, and exponential backoff reconnect logic. Assume the connection will drop — the question is whether your system handles it gracefully.</p>
+  <p>Data Ingestion and Time-Series Storage: Time-series data has specific access patterns — you almost always query by time range, often with downsampling for long-range views. InfluxDB and TimescaleDB are both strong choices. InfluxDB&#39;s Flux query language is optimized for time-series aggregations; TimescaleDB extends PostgreSQL so it integrates naturally with existing SQL tooling. For most production deployments under 50,000 data points per minute, either works well.</p>
+  <p>OTA Firmware Updates — Non-Negotiable: Once devices are deployed in the field, you cannot physically access them to fix bugs or add features. Over-the-air (OTA) firmware update capability is non-negotiable. Implement it from the first version, not as an afterthought. The update pipeline should include version verification, rollback capability (revert to last known good on failed boot), and staged rollout — update 5% of devices first, monitor error rates, then proceed.</p>
+  <p>Alerting and Anomaly Detection: Static threshold alerts (temperature above 80°C) are the minimum. Production systems benefit from dynamic baselining — alerting when a reading deviates significantly from its own historical pattern rather than a fixed number. This catches gradual drift (a sensor slowly reading high) that threshold alerts miss. Start with threshold alerts and add statistical anomaly detection as operational data accumulates.</p>
+  <nav aria-label="Important links">
+    <a href="/">Home</a>
+    <a href="/solutions">Solutions</a>
+    <a href="/products">Products</a>
+    <a href="/industries">Industries</a>
+    <a href="/insights">Insights</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</main></div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "@aicore/company-website",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Public AICORE Technologies company website frontend",
+  "scripts": {
+    "build": "echo \"company-website source is not scaffolded yet\"",
+    "dev": "echo \"company-website source is not scaffolded yet\"",
+    "lint": "echo \"company-website source is not scaffolded yet\"",
+    "test": "echo \"company-website source is not scaffolded yet\""
+  }
+}

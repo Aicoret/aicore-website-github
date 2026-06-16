@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <!-- Primary Meta -->
+    <meta name="theme-color" content="#07111F" />
+
+    <!-- Canonical -->
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="199x199" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <!-- Twitter Card -->
+    <!-- JSON-LD: Site identity -->
+    <!-- Fonts & DNS prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-DvIUXCCE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D3wuFude.css">
+      <title>Hardware-in-Loop Testing: A Practical Introduction for Embedded Teams | AICORE Technologies</title>
+    <meta name="description" content="How to set up reliable automated tests for firmware without expensive hardware." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aicoret.com/insights/hardware-in-loop-testing-embedded-teams" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AICORE Technologies" />
+    <meta property="og:title" content="Hardware-in-Loop Testing: A Practical Introduction for Embedded Teams | AICORE Technologies" />
+    <meta property="og:description" content="How to set up reliable automated tests for firmware without expensive hardware." />
+    <meta property="og:image" content="https://aicoret.com/opengraph.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://aicoret.com/insights/hardware-in-loop-testing-embedded-teams" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hardware-in-Loop Testing: A Practical Introduction for Embedded Teams | AICORE Technologies" />
+    <meta name="twitter:description" content="How to set up reliable automated tests for firmware without expensive hardware." />
+    <meta name="twitter:image" content="https://aicoret.com/opengraph.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"Article","headline":"Hardware-in-Loop Testing: A Practical Introduction for Embedded Teams","description":"How to set up reliable automated tests for firmware without expensive hardware.","image":"https://aicoret.com/opengraph.jpg","datePublished":"2024-10-31T23:00:00.000Z","dateModified":"2024-10-31T23:00:00.000Z","author":{"@type":"Organization","name":"AICORE Technical Team"},"publisher":{"@type":"Organization","name":"AICORE Technologies Limited","logo":{"@type":"ImageObject","url":"https://aicoret.com/logo.png"}},"mainEntityOfPage":"https://aicoret.com/insights/hardware-in-loop-testing-embedded-teams"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aicoret.com/"},{"@type":"ListItem","position":2,"name":"Insights","item":"https://aicoret.com/insights"},{"@type":"ListItem","position":3,"name":"Hardware-in-Loop Testing: A Practical Introduction for Embedded Teams","item":"https://aicoret.com/insights/hardware-in-loop-testing-embedded-teams"}]}]}</script>
+      <style id="seo-prerender-style">.seo-prerender{max-width:960px;margin:0 auto;padding:96px 24px 48px;font-family:Inter,system-ui,sans-serif;line-height:1.65;color:#0f172a}.seo-prerender h1{font-size:2.5rem;line-height:1.1;margin:0 0 1rem}.seo-prerender p{margin:0 0 1rem;color:#475569}.seo-prerender nav{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}.seo-prerender a{color:#1E5BFF;font-weight:600}</style>
+  </head>
+  <body>
+    <div id="root"><main id="seo-prerender" class="seo-prerender">
+  <h1>Hardware-in-Loop Testing: A Practical Introduction for Embedded Teams</h1>
+  <p>How to set up reliable automated tests for firmware without expensive hardware.</p>
+  <p>How to set up reliable automated tests for firmware without expensive hardware.</p>
+  <p>The Testing Gap in Embedded Development: Software teams have mature testing practices — unit tests, integration tests, CI pipelines. Embedded teams often have none of these. Testing is done manually: flash the firmware, connect the device, poke at it, and see what happens. This is slow, inconsistent, and does not scale. When the codebase grows and multiple engineers are contributing, manual testing becomes the bottleneck.</p>
+  <p>What Hardware-in-Loop (HIL) Testing Actually Means: Hardware-in-Loop testing means running firmware on actual hardware (or a hardware simulator) while automating the stimulus — inputs to the device — and verification — checking the device&#39;s response. A HIL test rig replaces the human who would manually press a button, observe an LED, and note the result. Instead, a test script asserts: when input X is applied, output Y should occur within Z milliseconds. The rig runs hundreds of these assertions automatically, in seconds.</p>
+  <p>Tier 1: Native Unit Tests (No Hardware Required): Start with the firmware logic that does not depend on hardware peripherals. Business logic, protocol parsers, state machines, and data transformations can all be compiled for the host machine and tested with a standard C++ test framework like Unity or Google Test. This catches the majority of logic bugs without needing any hardware. A CI pipeline can run these on every commit in seconds.</p>
+  <p>Tier 2: Emulator-Based Testing: QEMU can emulate common Arm Cortex-M processors and run firmware binaries without physical hardware. Peripheral-dependent code (UART, I2C, SPI) can be stubbed at the hardware abstraction layer. This tier is useful for integration-level tests — verifying that the main application loop behaves correctly, that the RTOS task scheduling works as expected, and that protocol state machines complete their sequences properly.</p>
+  <p>Tier 3: Real Hardware Automation: For tests that must run on actual silicon — timing-critical code, ADC accuracy, RF behaviour — a physical test rig is necessary. A Raspberry Pi or similar board can control the device under test via GPIO, UART, or SWD, apply stimuli (toggle pins, inject serial data), and read back responses. This rig connects to a CI server and runs firmware tests on every pull request. The device is flashed automatically, tests execute, and results are reported back to the CI system.</p>
+  <p>Building the CI Pipeline: A practical embedded CI pipeline runs: static analysis (cppcheck or clang-tidy), compilation for all target variants, native unit tests, and (optionally) HIL tests on real hardware. GitHub Actions, GitLab CI, and Jenkins all support self-hosted runners that can interface with physical test hardware. The investment to set up this pipeline is typically 2–4 weeks of engineering time. The return is catching regressions within minutes of a bad commit — rather than discovering them during field testing or, worse, in deployment.</p>
+  <p>Starting Point: The best way to start is to identify the three most critical and testable behaviours in your firmware — usually the main communication protocol, the primary state machine, and a key safety condition. Write native unit tests for these three cases first. Get them passing in CI. Then expand coverage incrementally. Contact AICORE if you need help setting up a firmware testing framework for your embedded system.</p>
+  <nav aria-label="Important links">
+    <a href="/">Home</a>
+    <a href="/solutions">Solutions</a>
+    <a href="/products">Products</a>
+    <a href="/industries">Industries</a>
+    <a href="/insights">Insights</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</main></div>
+  </body>
+</html>
