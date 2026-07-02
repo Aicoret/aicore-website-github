@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-02T20:04:53.333Z",
+  "generatedAt": "2026-07-02T20:17:07.182Z",
   "sourceRepository": "Aicoret/Aicore-GrowthOS",
-  "sourceCommit": "7d26b8e8ef01dbb81a5e4c811296360a1b6b6e7c",
+  "sourceCommit": "321e5cde9e07d0b372ccc2af1f448c82321bcddc",
   "sourcePath": "apps/company-website",
   "publishPath": "dist/public"
 }

@@ -2,8 +2,8 @@
   "name": "AICORE Technologies",
   "short_name": "AICORE",
   "icons": [
-    { "src": "/favicon.png", "sizes": "32x32", "type": "image/png" },
-    { "src": "/apple-touch-icon.png", "sizes": "199x199", "type": "image/png" }
+    { "src": "favicon.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "199x199", "type": "image/png" }
   ],
   "theme_color": "#07111F",
   "background_color": "#07111F",
